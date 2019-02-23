@@ -45,7 +45,7 @@ def addMother():
     sety = sety - 50
 
 
-def addBigSister():
+def addBig():
     global setx, sety, label_width
 
     canvas.create_line(setx+label_width/2, sety, setx+label_width/2,
@@ -55,27 +55,7 @@ def addBigSister():
     sety = sety - 50
 
 
-def addBigBrother():
-    global setx, sety, label_width
-
-    canvas.create_line(setx+label_width/2, sety, setx+label_width/2,
-                       sety-40, setx+label_width/2+40, sety-40)
-
-    setx = setx + 30 + label_width/2
-    sety = sety - 50
-
-
-def addLittleSister():
-    global setx, sety, label_width
-
-    canvas.create_line(setx+label_width/2, sety, setx+label_width/2,
-                       sety-40, setx+label_width/2+40, sety-40)
-
-    setx = setx + 30 + label_width/2
-    sety = sety - 50
-
-
-def addLittleBrother():
+def addLittle():
     global setx, sety, label_width
 
     canvas.create_line(setx+label_width/2, sety, setx+label_width/2,
@@ -86,16 +66,16 @@ def addLittleBrother():
 
 
 # 家系図を保存
-def capture():
-    a
+def capture(event):
+    canvas.postscript(file="family_tree.ps", colormode='color')
 
 
 root = tk.Tk()
 root.iconbitmap('test.ico')
-root.title("Kakeizu")
+root.title("Family Tree")
 root.geometry("500x500")
 
-# 初期変数
+# 初期値
 mode = 'me'
 setx = 250
 sety = 250
@@ -104,10 +84,8 @@ label_width = 0
 menu = Menu(root, tearoff=False)
 menu.add_command(label="父親を追加", command=addFather)
 menu.add_command(label="母親を追加", command=addMother)
-menu.add_command(label="兄を追加", command=addBigBrother)
-menu.add_command(label="姉を追加", command=addBigSister)
-menu.add_command(label="弟追加", command=addLittleBrother)
-menu.add_command(label="妹を追加", command=addLittleSister)
+menu.add_command(label="兄姉を追加", command=addBig)
+menu.add_command(label="弟妹を追加", command=addLittle)
 
 # キャンバス
 canvas = tk.Canvas(root, width=500, height=500)
@@ -125,7 +103,7 @@ addBtn.bind("<Button-1>", addNameValue)
 addBtn.pack(anchor="se", side="left")
 
 # 名前追加ボタン
-addBtn = tk.Button(text="ダウンロード", width=8)
+addBtn = tk.Button(text="psダウンロード", width=12)
 # <Button-1>は左クリック
 addBtn.bind("<Button-1>", capture)
 addBtn.pack(anchor="se", side="left")

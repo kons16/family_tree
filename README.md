@@ -1,2 +1,3 @@
 # family_tree 
-family_tree.py can create a family tree drawing.
+`family_tree.py` は家系図を作成できるGUIアプリです.
+

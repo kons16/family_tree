@@ -45,6 +45,15 @@ def addMother():
     sety = sety - 50
 
 
+def addBigSister():
+
+def addBigBrother():
+
+def addLittleSister():
+
+def addLittleBrother():
+
+
 root = tk.Tk()
 root.iconbitmap('test.ico')
 root.title("Kakeizu")
@@ -59,6 +68,10 @@ label_width = 0
 menu = Menu(root, tearoff=False)
 menu.add_command(label="父親を追加", command=addFather)
 menu.add_command(label="母親を追加", command=addMother)
+menu.add_command(label="姉を追加", command=addBigSister)
+menu.add_command(label="兄を追加", command=addBigBrother)
+menu.add_command(label="妹を追加", command=addLittleSister)
+menu.add_command(label="弟追加", command=addLittleBrother)
 
 # キャンバス
 canvas = tk.Canvas(root, width=500, height=500)

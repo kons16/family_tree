@@ -37,7 +37,7 @@ def addFather():
 
 def addMother():
     global setx, sety, label_width
-    # 家系図への線を描く
+
     canvas.create_line(setx+label_width/2, sety, setx+label_width/2,
                        sety-40, setx+label_width/2+40, sety-40)
 
@@ -46,12 +46,48 @@ def addMother():
 
 
 def addBigSister():
+    global setx, sety, label_width
+
+    canvas.create_line(setx+label_width/2, sety, setx+label_width/2,
+                       sety-40, setx+label_width/2+40, sety-40)
+
+    setx = setx + 30 + label_width/2
+    sety = sety - 50
+
 
 def addBigBrother():
+    global setx, sety, label_width
+
+    canvas.create_line(setx+label_width/2, sety, setx+label_width/2,
+                       sety-40, setx+label_width/2+40, sety-40)
+
+    setx = setx + 30 + label_width/2
+    sety = sety - 50
+
 
 def addLittleSister():
+    global setx, sety, label_width
+
+    canvas.create_line(setx+label_width/2, sety, setx+label_width/2,
+                       sety-40, setx+label_width/2+40, sety-40)
+
+    setx = setx + 30 + label_width/2
+    sety = sety - 50
+
 
 def addLittleBrother():
+    global setx, sety, label_width
+
+    canvas.create_line(setx+label_width/2, sety, setx+label_width/2,
+                       sety-40, setx+label_width/2+40, sety-40)
+
+    setx = setx + 30 + label_width/2
+    sety = sety - 50
+
+
+# 家系図を保存
+def capture():
+    a
 
 
 root = tk.Tk()
@@ -68,10 +104,10 @@ label_width = 0
 menu = Menu(root, tearoff=False)
 menu.add_command(label="父親を追加", command=addFather)
 menu.add_command(label="母親を追加", command=addMother)
-menu.add_command(label="姉を追加", command=addBigSister)
 menu.add_command(label="兄を追加", command=addBigBrother)
-menu.add_command(label="妹を追加", command=addLittleSister)
+menu.add_command(label="姉を追加", command=addBigSister)
 menu.add_command(label="弟追加", command=addLittleBrother)
+menu.add_command(label="妹を追加", command=addLittleSister)
 
 # キャンバス
 canvas = tk.Canvas(root, width=500, height=500)
@@ -86,6 +122,12 @@ nameBox.pack(anchor="se", side="left")
 addBtn = tk.Button(text="追加", width=8)
 # <Button-1>は左クリック
 addBtn.bind("<Button-1>", addNameValue)
+addBtn.pack(anchor="se", side="left")
+
+# 名前追加ボタン
+addBtn = tk.Button(text="ダウンロード", width=8)
+# <Button-1>は左クリック
+addBtn.bind("<Button-1>", capture)
 addBtn.pack(anchor="se", side="left")
 
 root.mainloop()

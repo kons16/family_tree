@@ -28,8 +28,9 @@ def showMenu(event):
 def addFather():
     global setx, sety, label_width
     # 家系図への線を描く
-    canvas.create_line(setx+label_width/2, sety, setx+label_width/2,
-                       sety-40, setx+label_width/2-40, sety-40)
+    canvas.create_line(setx+label_width/2, sety,
+                       setx+label_width/2, sety-40,
+                       setx+label_width/2-40, sety-40)
     # addFatherを押したラベルの座標からfatherをセットする位置を決める
     setx = setx - 45 - label_width/2
     sety = sety - 50
@@ -38,8 +39,9 @@ def addFather():
 def addMother():
     global setx, sety, label_width
 
-    canvas.create_line(setx+label_width/2, sety, setx+label_width/2,
-                       sety-40, setx+label_width/2+40, sety-40)
+    canvas.create_line(setx+label_width/2, sety,
+                       setx+label_width/2, sety-40,
+                       setx+label_width/2+40, sety-40)
 
     setx = setx + 30 + label_width/2
     sety = sety - 50
@@ -48,26 +50,25 @@ def addMother():
 def addBig():
     global setx, sety, label_width
 
-    canvas.create_line(setx+label_width/2, sety, setx+label_width/2,
-                       sety-40, setx+label_width/2+40, sety-40)
+    canvas.create_line(setx+label_width/2, sety,
+                       setx+label_width/2, sety-20,
+                       setx+label_width/2-60, sety-20,
+                       setx+label_width/2-60, sety)
 
-    setx = setx + 30 + label_width/2
-    sety = sety - 50
+    setx = setx - 80 + label_width/2
+    sety = sety
 
 
 def addLittle():
     global setx, sety, label_width
 
-    canvas.create_line(setx+label_width/2, sety, setx+label_width/2,
-                       sety-40, setx+label_width/2+40, sety-40)
+    canvas.create_line(setx+label_width/2, sety,
+                       setx+label_width/2, sety-20,
+                       setx+label_width/2+60, sety-20,
+                       setx+label_width/2+60, sety)
 
-    setx = setx + 30 + label_width/2
-    sety = sety - 50
-
-
-# 家系図を保存
-def capture(event):
-    canvas.postscript(file="family_tree.ps", colormode='color')
+    setx = setx + 45 + label_width/2
+    sety = sety
 
 
 root = tk.Tk()
@@ -100,12 +101,6 @@ nameBox.pack(anchor="se", side="left")
 addBtn = tk.Button(text="追加", width=8)
 # <Button-1>は左クリック
 addBtn.bind("<Button-1>", addNameValue)
-addBtn.pack(anchor="se", side="left")
-
-# 名前追加ボタン
-addBtn = tk.Button(text="psダウンロード", width=12)
-# <Button-1>は左クリック
-addBtn.bind("<Button-1>", capture)
 addBtn.pack(anchor="se", side="left")
 
 root.mainloop()

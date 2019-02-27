@@ -116,17 +116,16 @@ root.title("Family Tree")
 root.geometry("500x500")
 
 # 初期値
-mode = 'me'
 setx = 250
 sety = 250
 label_width = 0
 
 menu = Menu(root, tearoff=False)
-menu.add_command(label="父親を追加", command=addFather)
-menu.add_command(label="母親を追加", command=addMother)
-menu.add_command(label="兄姉を追加", command=addBig)
-menu.add_command(label="弟妹を追加", command=addLittle)
-menu.add_command(label="配偶者を追加", command=addSpouse)
+menu.add_command(label="父親に追加", command=addFather)
+menu.add_command(label="母親に追加", command=addMother)
+menu.add_command(label="兄姉に追加", command=addBig)
+menu.add_command(label="弟妹に追加", command=addLittle)
+menu.add_command(label="配偶者に追加", command=addSpouse)
 
 # キャンバス
 canvas = tk.Canvas(root, width=500, height=500)
@@ -138,7 +137,7 @@ nameBox.insert(tk.END, "")
 nameBox.pack(anchor="se", side="left")
 
 # 名前追加ボタン
-addBtn = tk.Button(text="追加", width=8)
+addBtn = tk.Button(text="入力確定", width=8)
 # <Button-1>は左クリック
 addBtn.bind("<Button-1>", addNameValue)
 addBtn.pack(anchor="se", side="left")
